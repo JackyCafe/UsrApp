@@ -37,13 +37,14 @@ public class UsrGet<T> implements InterNet.IGet {
 
     public void setToken(String token) {
         this.token = token;
+        this.conn.setRequestProperty("Authorization","Bearer " + token);
+
     }
 
     @Override
     public String doGet()  {
         StringBuffer lines = null;
         try {
-            conn.setRequestProperty("Authorization","Bearer " + token);
             conn.connect();
             InputStream in = conn.getInputStream();
             InputStreamReader reader = new InputStreamReader(in);

@@ -14,11 +14,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class UsrPost<T> implements InterNet.IPost {
+public class UsrPost implements InterNet.IPost {
     URL url;
     HttpURLConnection conn;
     JSONObject  json;
     Gson gson = new Gson();
+    String token;
 
     public UsrPost(String url) throws IOException {
         this.url = new URL(url);
@@ -30,6 +31,13 @@ public class UsrPost<T> implements InterNet.IPost {
         this.conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");//設定訊息的型別
         this.conn.setRequestProperty("Accept-Charset", "UTF-8");
     }
+
+    public void setToken(String token) {
+        this.token = token;
+        this.conn.setRequestProperty("Authorization","Bearer " + token);
+
+    }
+
 
     @Override
     public String doPost( JSONObject json) throws IOException {
@@ -44,16 +52,6 @@ public class UsrPost<T> implements InterNet.IPost {
         return br.readLine();
     }
 
-    @Override
-    public T parseJson(String response,Type type) {
-        T obj = gson.fromJson(response, type);
-        return obj;
-    }
 
 
-    @Override
-    public List parseJsonList(String response,Type type) {
-        List<T> objs = gson.fromJson(response, (Type) type);
-        return objs;
-    }
 }

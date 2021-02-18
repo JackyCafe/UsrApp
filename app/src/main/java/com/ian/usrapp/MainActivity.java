@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.auth0.android.jwt.JWT;
+import com.google.gson.Gson;
 import com.ian.usrapp.Obj.Token;
 import com.ian.usrapp.Util.UsrPost;
 
@@ -17,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private String usr,pwd;
     private MainApp app;
     private JWT jwt;
-    Token token;
+    private Token token;
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ed_user = findViewById(R.id.user);
         ed_pwd = findViewById(R.id.pwd);
         app = (MainApp) getApplication();
+        gson = new Gson();
 
         if (!app.getUserName().equals(""))    {
             ed_user.setText(app.getUserName());
@@ -56,13 +59,18 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject json = new JSONObject();//建立json物件
                     json.put("username", usr);//使用URLEncoder.encode對特殊和不可見字元進行編碼
                     json.put("password",pwd);
-                    UsrPost<Token> usrPost = new UsrPost<Token>(app.token_url);
+                    UsrPost usrPost = new UsrPost(app.token_url);
                     String response = usrPost.doPost(json);
-                    token = usrPost.parseJson(response,Token.class);
+                    token = gson.fromJson(response,Token.class);
                     app.setToken(token.access);
                     jwt = new JWT(token.access);
                     String user = jwt.getClaim("user_id").asString();
                     app.setUserId(Integer.parseInt(user));
+                    if (token!=null){
+                        Intent it = new Intent(MainActivity.this, Menu.class);
+                        startActivity(it);
+                        app.Log("doLogin");
+                    }
                 } catch (Exception e) {
                     for(StackTraceElement se:e.getStackTrace())
                     {app.Log(se.toString());}
@@ -70,11 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
-        if (token!=null){
-            Intent it = new Intent(this, Menu.class);
-            startActivity(it);
-            app.Log("doLogin");
-        }
+
     }
 
 

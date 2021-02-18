@@ -8,12 +8,10 @@ import java.lang.reflect.Type;
 
 public interface InterNet {
 
-    interface IPost<T> {
+    interface IPost {
         public String doPost(JSONObject json) throws IOException;
 
-        public T parseJson(String response, Type type);
 
-        public List<T> parseJsonList(String response, Type type);
     }
 
     interface IGet<T> {

@@ -72,7 +72,7 @@ public class CheckActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            view.setAdapter(new CheckAdapter(datas));
+            view.setAdapter(new CheckAdapter(CheckActivity.this,datas));
 //            view.notifyAll();
         }
     }
