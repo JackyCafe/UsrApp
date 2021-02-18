@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.ian.usrapp.CheckActivity;
 import com.ian.usrapp.MainApp;
 import com.ian.usrapp.Obj.Check;
@@ -74,8 +75,11 @@ public class CheckAdapter extends RecyclerView.Adapter<CheckAdapter.ViewHolder> 
                                 usrPost.setToken(app.getToken());
                                 String response = usrPost.doPost(json);
                                 Looper.prepare();
+                                Snackbar.make(holder.itemView, datas.get(position).getTitle()+"已上傳", Snackbar.LENGTH_LONG).show();
                                 Looper.loop();
-                                Toast.makeText(context,"檔案已上傳",Toast.LENGTH_LONG).show();
+
+
+//                                Toast.makeText(context,"檔案已上傳",Toast.LENGTH_LONG).show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
