@@ -14,9 +14,13 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
     public void doReading(View view) {
+        Intent it = new Intent(this,ReadingActivity.class);
+        startActivity(it);
     }
 
     public void doBlog(View view) {
+        Intent it = new Intent(this,BlogActivity.class);
+        startActivity(it);
     }
 
     public void doCheck(View view) {
