@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     String user = jwt.getClaim("user_id").asString();
                     app.setUserId(Integer.parseInt(user));
                     if (token!=null){
-                        Intent it = new Intent(MainActivity.this, Menu.class);
+                        Intent it  = new Intent(MainActivity.this, MenuActivity.class);
                         startActivity(it);
                         app.Log("doLogin");
                     }
@@ -82,4 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void doBack(View view) {
+        finish();
+    }
 }

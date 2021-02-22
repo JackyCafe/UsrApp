@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Menu">
+    tools:context=".MenuActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,13 +26,13 @@
             android:layout_width="match_parent"
             android:onClick="doReading"
             android:layout_weight="1"
-            android:text="Reading"
+            android:text="閱讀新知"
             />
         <androidx.appcompat.widget.AppCompatButton
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:onClick="doBlog"
-            android:text="Blog"
+            android:text="迷津解惑"
             android:layout_weight="1"
             />
         <androidx.appcompat.widget.AppCompatButton
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:onClick="doCheck"
             android:layout_weight="1"
-            android:text="check"
+            android:text="每日任務"
            />
 
 

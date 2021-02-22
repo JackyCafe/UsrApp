@@ -63,7 +63,7 @@ public class UsrGet<T> implements InterNet.IGet {
     }
 
     @Override
-    public Check parseJson(String response, Type type) {
+    public T  parseJson(String response, Type type) {
         return null;
     }
 
