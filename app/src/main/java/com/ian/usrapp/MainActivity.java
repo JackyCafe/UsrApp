@@ -81,8 +81,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (!app.getUserName().equals(""))    {
+            ed_user.setText(app.getUserName());
+        }
+        if (!app.getPwdName().equals(""))    {
+            ed_pwd.setText(app.getPwdName());
+        }
+    }
 
     public void doBack(View view) {
         finish();
+    }
+
+    public void doRegister(View view) {
+        Intent it = new Intent(this, RegisterActivity.class);
+        startActivity(it);
     }
 }

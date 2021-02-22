@@ -13,7 +13,7 @@ public class MainApp extends Application {
     String my_activity_url = url +"api/myActivity/";
     String reading_url = url +"api/reading/";
     String blog_url = url +"api/blog/";
-
+    String register_url = url+"register";
 
 
 
