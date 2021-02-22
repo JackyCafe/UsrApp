@@ -7,11 +7,12 @@ import android.util.Log;
 public class MainApp extends Application {
     SharedPreferences spf;
     SharedPreferences.Editor editor ;
-    String token_url = "https://usr-test-304018.df.r.appspot.com/api/token/";
-    String activity_url = "https://usr-test-304018.df.r.appspot.com/api/Activity/";
-    String my_activity_url = "https://usr-test-304018.df.r.appspot.com/api/myActivity/";
-    String reading_url = "https://usr-test-304018.df.r.appspot.com/api/reading/";
-
+    String url = "https://usr-test-304018.df.r.appspot.com/";
+    String token_url = url + "api/token/";
+    String activity_url = url +"api/Activity/";
+    String my_activity_url = url +"api/myActivity/";
+    String reading_url = url +"api/reading/";
+    String blog_url = url +"api/blog/";
 
 
 

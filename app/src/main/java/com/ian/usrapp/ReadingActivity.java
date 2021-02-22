@@ -16,7 +16,6 @@ import com.google.gson.reflect.TypeToken;
 import com.ian.usrapp.Adapter.ReadAdapter;
 import com.ian.usrapp.Obj.ReadClass;
 import com.ian.usrapp.Util.UsrGet;
-
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -55,7 +54,6 @@ public class ReadingActivity extends AppCompatActivity {
                             return setSpanSize(position,datas);
                         }
                     });
-                    app.Log(datas.toString());
                     handler.setData(datas);
                     handler.sendEmptyMessage(0);
                 } catch (IOException e) {

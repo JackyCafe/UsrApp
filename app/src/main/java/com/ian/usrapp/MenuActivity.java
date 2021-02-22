@@ -20,7 +20,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void doBlog(View view) {
-
+            Intent it = new Intent(this, BlogActivity.class);
+            startActivity(it);
         
     }
 

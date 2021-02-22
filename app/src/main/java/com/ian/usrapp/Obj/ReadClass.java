@@ -1,6 +1,8 @@
 package com.ian.usrapp.Obj;
 
-public class ReadClass {
+import java.io.Serializable;
+
+public class ReadClass implements Serializable {
     String id;
     String title;
     String category;
