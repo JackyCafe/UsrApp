@@ -1,6 +1,7 @@
 package com.ian.usrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
     public void doReading(View view) {
@@ -27,6 +30,17 @@ public class MenuActivity extends AppCompatActivity {
 
     public void doCheck(View view) {
         Intent it = new Intent(this,CheckActivity.class);
+        startActivity(it);
+    }
+
+
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
+
+    public void doFans(View view) {
+        Intent it = new Intent(this,FansPageActivity.class);
         startActivity(it);
     }
 }

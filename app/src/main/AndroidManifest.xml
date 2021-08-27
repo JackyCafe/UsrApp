@@ -13,13 +13,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UsrApp">
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".ReadingContentActivity" />
-        <activity android:name=".ReadingActivity" />
-        <activity android:name=".CheckActivity" />
-        <activity android:name=".BlogActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".FansPageActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
+
+        <activity
+            android:name=".Agreement"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReadingContentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReadingActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CheckActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BlogActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

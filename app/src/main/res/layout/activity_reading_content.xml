@@ -6,12 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ReadingContentActivity">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/back"
-        android:onClick="doBack"
-        />
+    <include layout="@layout/toolbar"/>
     <TextView
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"

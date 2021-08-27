@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Agreement">
+    <include layout="@layout/toolbar"
+        android:id="@+id/agree_toolbar"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我同意"
+        android:id="@+id/i_agree"
+        android:onClick="doAgree"
+        android:layout_alignParentBottom="true"
+        />
+    <ScrollView
+        android:layout_above="@id/i_agree"
+        android:layout_below="@id/agree_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+        <TextView
+            android:id="@+id/tv_agree"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+
+    </ScrollView>
+
+</RelativeLayout>

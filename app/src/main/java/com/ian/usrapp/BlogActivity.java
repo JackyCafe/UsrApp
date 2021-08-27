@@ -2,9 +2,12 @@ package com.ian.usrapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.ian.usrapp.Util.UsrGet;
 import com.ian.usrapp.Util.UsrPost;
@@ -31,7 +34,18 @@ public class BlogActivity extends AppCompatActivity {
         ed_content = findViewById(R.id.content);
         token = app.getToken();
         id = app.getUserId();
-        app.Log(""+id);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Button btn = findViewById(R.id.back_toolbar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Log.i("BlogActivity","id:"+id);
+
     }
 
     public void doBack(View view) {
@@ -55,10 +69,11 @@ public class BlogActivity extends AppCompatActivity {
                     json.put("user", id);
                     usrPost.setToken(token);
                     String response = usrPost.doPost(json);
-                    app.Log(response);
+                    Log.i("BlogActivity","response:"+response);
+
 
                 } catch (IOException | JSONException e) {
-                    app.Log(e.toString());
+                    Log.i("BlogActivity","exception:"+e.toString());
 
                     e.printStackTrace();
                 }

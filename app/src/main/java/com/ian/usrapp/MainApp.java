@@ -7,7 +7,8 @@ import android.util.Log;
 public class MainApp extends Application {
     SharedPreferences spf;
     SharedPreferences.Editor editor ;
-    String url = "https://usr-test-304018.df.r.appspot.com/";
+//    String url = "https://usr-test-304018.df.r.appspot.com/";
+    String url = "http://120.110.115.81:8000/";
     String token_url = url + "api/token/";
     String activity_url = url +"api/Activity/";
     String my_activity_url = url +"api/myActivity/";
@@ -34,6 +35,15 @@ public class MainApp extends Application {
         editor.putString("user",user);
         editor.commit();
     }
+
+    public  void setIsAgreed(boolean isAgreed ){
+        editor.putBoolean("isAgree",isAgreed);
+        editor.commit();
+    }
+
+    public boolean getAgree()
+    {return spf.getBoolean("isAgree",false);}
+
 
     public String getPwdName()
     {

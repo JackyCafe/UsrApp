@@ -2,6 +2,7 @@ package com.ian.usrapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.gson.reflect.TypeToken;
 
@@ -41,6 +44,16 @@ public class CheckActivity extends AppCompatActivity {
         manager.setOrientation(RecyclerView.VERTICAL);
         view.setLayoutManager(manager);
         view.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Button btn = findViewById(R.id.back_toolbar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         app = (MainApp) getApplication();
         handler = new MyHandler();
         new Thread(new Runnable() {

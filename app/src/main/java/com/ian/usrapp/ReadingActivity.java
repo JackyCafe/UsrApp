@@ -2,6 +2,7 @@ package com.ian.usrapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 
 import com.google.gson.reflect.TypeToken;
@@ -35,7 +38,15 @@ public class ReadingActivity extends AppCompatActivity {
 //        LinearLayoutManager manager = new LinearLayoutManager(this);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         manager.setOrientation(GridLayoutManager.HORIZONTAL);
-
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Button btn = findViewById(R.id.back_toolbar);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         app = (MainApp) getApplication();
 
         new Thread(new Runnable() {

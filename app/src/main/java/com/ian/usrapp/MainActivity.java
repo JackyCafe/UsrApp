@@ -4,7 +4,10 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import com.auth0.android.jwt.JWT;
 import com.google.gson.Gson;
 import com.ian.usrapp.Obj.Token;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ed_user = findViewById(R.id.user);
         ed_pwd = findViewById(R.id.pwd);
         app = (MainApp) getApplication();
+       // app.setIsAgreed(false);
         gson = new Gson();
 
         if (!app.getUserName().equals(""))    {
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doAuthentication() {
+        Log.i("MainActivity","doAuthentication");
 
         new Thread(new Runnable() {
             @Override
@@ -64,16 +69,23 @@ public class MainActivity extends AppCompatActivity {
                     token = gson.fromJson(response,Token.class);
                     app.setToken(token.access);
                     jwt = new JWT(token.access);
+                    Log.i("MainActivity",jwt.toString());
                     String user = jwt.getClaim("user_id").asString();
                     app.setUserId(Integer.parseInt(user));
                     if (token!=null){
-                        Intent it  = new Intent(MainActivity.this, MenuActivity.class);
-                        startActivity(it);
-                        app.Log("doLogin");
+                        boolean isAgreed = app.getAgree();
+                        if (isAgreed == true){
+                            Intent it  = new Intent(MainActivity.this, MenuActivity.class);
+                            startActivity(it);
+                            app.Log("doLogin");
+                        }else{
+                            Intent it  = new Intent(MainActivity.this, Agreement.class);
+                            startActivity(it);                        }
                     }
                 } catch (Exception e) {
                     for(StackTraceElement se:e.getStackTrace())
-                    {app.Log(se.toString());}
+                    {  Log.i("MainActivity",e.toString());
+                    }
                     e.printStackTrace();
                 }
             }
